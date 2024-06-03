@@ -1,0 +1,18 @@
+.Image{
+    Display:flex;
+flex-wrap: wrap;
+    justify-content: center;
+    gap:10px;
+}
+
+.Image img{
+    width: 300px;
+    height:300px;
+}
+
+.vedio{
+    Display: flex;
+        flex-wrap: wrap;
+        /* justify-content: center; */
+        gap: 10px;
+}
