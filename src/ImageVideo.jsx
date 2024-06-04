@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
-import './ImageVedio.css';
-function ImageVedio() {
+import './ImageVideo.css';
+function ImageVideo() {
     const [images, setImages] = useState([]);
     const [videos, setVideos] = useState([]);
     const videoRefs = useRef({});
-    const image = "https://static.vecteezy.com/system/resources/previews/004/640/699/non_2x/circle-upload-icon-button-isolated-on-white-background-vector.jpg";
+
+    const image = "https://img.freepik.com/free-vector/online-image-upload-landing-page_23-2148282428.jpg";
+    const noimage = "https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png";
+    const novideo = "https://synthvibrations.com/wp-content/plugins/lightview-plus/img/novideo.png";
     useEffect(() => {
         const handleScroll = () => {
             Object.keys(videoRefs.current).forEach((key) => {
@@ -47,34 +50,36 @@ function ImageVedio() {
 
     return (
         <div>
-            <div className="image_vedio_upload_input">
-                <FontAwesomeIcon icon={faUpload} />
-                <input type="file" multiple className='Upload_input' onChange={handleImageChange} />
+            <div className="image_video_upload">
+                <h2>Upload Image Or Vedio</h2>
+                <img src={image} alt="" style={{ width: '250px' }} />
+                <div className="image_video_upload_input">
+                    <FontAwesomeIcon icon={faUpload} />
+                    <input type="file" accept="image/*,video/*" multiple className='Upload_input' onChange={handleImageChange} />
+                </div>
             </div>
-
-            {/* <button onClick={() => document.querySelector('input[type="file"]').click()}>Select Images</button> */}
             <h2>Images</h2>
             <div>
                 {images.length === 0 ? (
-                    <div className='Image'>
-                        <h2>Please upload image </h2>
+                    <div className='NoImage'>
+                        <img src={noimage} alt="" style={{ width: '50%', margin: 'auto', background: 'white' }} />
                     </div>) :
-                    (<ul className='Image'>
+                    (<div className='Image'>
                         {images.map((image, index) => (
-                            <li key={index}>
+                            <div key={index} className='images_items'>
                                 <img className="img_upload" src={image} alt="" />
-                            </li>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                     )}
             </div>
             <h2>Videos</h2>
             <div>
                 {videos.length === 0 ? (
-                    <div className='Image' style={{ display: 'flex', justifyContent: 'center' }}>
-                        <img src='https://i.ytimg.com/vi/5y2GTQ9jLbw/maxresdefault.jpg' alt='There is no vedio' style={{ width: '50%', margin: 'auto', }} />
+                    <div className='NoImage' style={{ display: 'flex', justifyContent: 'center' }}>
+                        <img src={novideo} alt='There is no vedio' style={{ width: '50%', margin: 'auto', }} />
                     </div>) :
-                    (<ul className='vedio'>
+                    (<ul className='video'>
                         {videos.map((video, index) => (
                             <li key={index}>
                                 <video
@@ -83,6 +88,7 @@ function ImageVedio() {
                                     width="300"
                                     height="300"
                                     className="videoPlayer"
+                                    muted
                                 >
                                     <source src={video} type="video/mp4" />
                                 </video>
@@ -95,4 +101,4 @@ function ImageVedio() {
     );
 }
 
-export default ImageVedio;
+export default ImageVideo;
