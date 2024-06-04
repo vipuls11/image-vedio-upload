@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+
 import './ImageVedio.css';
 function ImageVedio() {
     const [images, setImages] = useState([]);
     const [videos, setVideos] = useState([]);
     const videoRefs = useRef({});
-
+    const image = "https://static.vecteezy.com/system/resources/previews/004/640/699/non_2x/circle-upload-icon-button-isolated-on-white-background-vector.jpg";
     useEffect(() => {
         const handleScroll = () => {
             Object.keys(videoRefs.current).forEach((key) => {
@@ -44,32 +47,50 @@ function ImageVedio() {
 
     return (
         <div>
-            <input type="file" multiple onChange={handleImageChange} />
+            <div className="image_vedio_upload_input">
+                <FontAwesomeIcon icon={faUpload} />
+                <input type="file" multiple className='Upload_input' onChange={handleImageChange} />
+            </div>
+
             {/* <button onClick={() => document.querySelector('input[type="file"]').click()}>Select Images</button> */}
             <h2>Images</h2>
-            <ul className='Image'>
-                {images.map((image, index) => (
-                    <li key={index}>
-                        <img src={image} alt="" />
-                    </li>
-                ))}
-            </ul>
+            <div>
+                {images.length === 0 ? (
+                    <div className='Image'>
+                        <h2>Please upload image </h2>
+                    </div>) :
+                    (<ul className='Image'>
+                        {images.map((image, index) => (
+                            <li key={index}>
+                                <img className="img_upload" src={image} alt="" />
+                            </li>
+                        ))}
+                    </ul>
+                    )}
+            </div>
             <h2>Videos</h2>
-            <ul className='vedio'>
-                {videos.map((video, index) => (
-                    <li key={index}>
-                        <video
-                            ref={(ref) => (videoRefs.current[index] = ref)}
-                            controls
-                            width="300"
-                            height="300"
-                            className="videoPlayer"
-                        >
-                            <source src={video} type="video/mp4" />
-                        </video>
-                    </li>
-                ))}
-            </ul>
+            <div>
+                {videos.length === 0 ? (
+                    <div className='Image' style={{ display: 'flex', justifyContent: 'center' }}>
+                        <img src='https://i.ytimg.com/vi/5y2GTQ9jLbw/maxresdefault.jpg' alt='There is no vedio' style={{ width: '50%', margin: 'auto', }} />
+                    </div>) :
+                    (<ul className='vedio'>
+                        {videos.map((video, index) => (
+                            <li key={index}>
+                                <video
+                                    ref={(ref) => (videoRefs.current[index] = ref)}
+                                    controls
+                                    width="300"
+                                    height="300"
+                                    className="videoPlayer"
+                                >
+                                    <source src={video} type="video/mp4" />
+                                </video>
+                            </li>
+                        ))}
+                    </ul>)
+                }
+            </div>
         </div>
     );
 }

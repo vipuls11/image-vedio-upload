@@ -1,18 +1,58 @@
+:root {
+    --primary-color: cornflowerblue;
+    --background-color: white;
+}
+
+
+.Image .img_upload{
+    width: 280px;
+    height:280px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+
+.image_vedio_upload_input{
+    display: flex;
+     align-items: center;
+     gap: 10px;
+      text-align: center;
+      border: 1px solid black;
+       width: 50%;
+       font-size: 30px;
+        margin: auto;
+         margin-top: 20px;
+          padding: 10px 10px;
+           cursor: pointer;
+}
+
+.Upload_input{
+    font-size: 24px;
+    width: 100%;
+     overflow: hidden;
+      cursor: pointer;
+      color: var(--primary-color);
+}
+
 .Image{
-    Display:flex;
-flex-wrap: wrap;
-    justify-content: center;
-    gap:10px;
-}
-
-.Image img{
-    width: 300px;
-    height:300px;
-}
-
-.vedio{
+    text-decoration: none;
+    list-style: none;
     Display: flex;
         flex-wrap: wrap;
-        /* justify-content: center; */
+        justify-content: space-evenly;
         gap: 10px;
+        padding: 0;
+}
+.vedio{
+    text-decoration: none;
+    list-style: none;
+    Display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 10px;
+        padding: 0;
+}
+
+h2{
+    font-size: 30px;
 }
