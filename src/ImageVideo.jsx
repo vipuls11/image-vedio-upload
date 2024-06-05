@@ -51,7 +51,7 @@ function ImageVideo() {
     return (
         <div>
             <div className="image_video_upload">
-                <h2>Upload Image Or Vedio</h2>
+                <h2>Upload Images Or Videos</h2>
                 <img src={image} alt="" style={{ width: '250px' }} />
                 <div className="image_video_upload_input">
                     <FontAwesomeIcon icon={faUpload} />
